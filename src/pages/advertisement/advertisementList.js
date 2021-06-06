@@ -33,7 +33,7 @@ export default function AdvertisementList() {
                 <Table.Cell>{advert.salary}</Table.Cell>
                 <Table.Cell>{advert.appDeadline}</Table.Cell>
                 <Table.Cell>{advert.requirements}</Table.Cell>
-                <Table.Cell>{advert.isActive}</Table.Cell>
+                <Table.Cell>{advert.isActive.toString()}</Table.Cell>
               </Table.Row>
 
             )))
