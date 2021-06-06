@@ -1,14 +1,23 @@
-import React from 'react'
+
 import { Icon, Menu, Table } from "semantic-ui-react";
-export default function advertisementList() {
-    return (
-        <div>
-              <Table celled>
-        <Table.Header>   
+import { useEffect, useState } from "react";
+import JobAdvertisementService from "../../services/jobAdvertisement";
+export default function AdvertisementList() {
+
+  const [advertisements, setadvertisements] = useState([])
+  useEffect(() => {
+    let advertisementService = new JobAdvertisementService()
+    advertisementService.getAll().then(result => setadvertisements(result.data.data))
+  }, [])
+
+  return (
+    <div>
+      <Table celled>
+        <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Name</Table.HeaderCell>
             <Table.HeaderCell>Open Positons</Table.HeaderCell>
-            <Table.HeaderCell>Publish Date</Table.HeaderCell>
+            <Table.HeaderCell>Salary</Table.HeaderCell>
             <Table.HeaderCell>Deadline</Table.HeaderCell>
             <Table.HeaderCell>Requirements</Table.HeaderCell>
             <Table.HeaderCell>Active</Table.HeaderCell>
@@ -16,16 +25,21 @@ export default function advertisementList() {
         </Table.Header>
 
         <Table.Body>
-          
-            <Table.Row>
-              <Table.Cell>React Company</Table.Cell>
-              <Table.Cell>45</Table.Cell>
-              <Table.Cell>12-06-2021</Table.Cell>
-              <Table.Cell>11-07-2021</Table.Cell>
-              <Table.Cell>Javascript,react,mongoDb,RabbitMq</Table.Cell>
-              <Table.Cell>True</Table.Cell>
-            </Table.Row>
-         
+          {
+            advertisements.map((advert => (
+              <Table.Row key={advert.id}>
+                <Table.Cell>{advert.name}</Table.Cell>
+                <Table.Cell>{advert.openPositions}</Table.Cell>
+                <Table.Cell>{advert.salary}</Table.Cell>
+                <Table.Cell>{advert.appDeadline}</Table.Cell>
+                <Table.Cell>{advert.requirements}</Table.Cell>
+                <Table.Cell>{advert.isActive}</Table.Cell>
+              </Table.Row>
+
+            )))
+          }
+
+
         </Table.Body>
 
         <Table.Footer>
@@ -47,6 +61,6 @@ export default function advertisementList() {
           </Table.Row>
         </Table.Footer>
       </Table>
-        </div>
-    )
+    </div>
+  )
 }

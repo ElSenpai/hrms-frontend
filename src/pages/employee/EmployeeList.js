@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { Icon, Menu, Table } from "semantic-ui-react";
+import EmployeeService from '../../services/employeeService';
+
 export default function EmployeeList() {
+const [employees, setEmployees] = useState([])
+useEffect(()=>{
+  let employeeService = new EmployeeService()
+  employeeService.getAll().then(result=>setEmployees(result.data.data))
+
+})
     return (
         <div>
             <Table celled>
@@ -14,12 +22,16 @@ export default function EmployeeList() {
         </Table.Header>
 
         <Table.Body>
-          
-            <Table.Row>
-              <Table.Cell>Ceren</Table.Cell>
-              <Table.Cell>Budak</Table.Cell>
-              <Table.Cell>Ceren@Ahmet.com</Table.Cell>
+          {
+             employees.map((emp)=>(
+                <Table.Row key={emp.userId}>
+              <Table.Cell>{emp.firsName}</Table.Cell>
+              <Table.Cell>{emp.lastName}</Table.Cell>
+              <Table.Cell>{emp.email}</Table.Cell>
             </Table.Row>
+             ))
+          }
+           
          
         </Table.Body>
 

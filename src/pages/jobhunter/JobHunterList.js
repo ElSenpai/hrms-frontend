@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { Icon,  Menu, Table } from "semantic-ui-react";
+import JobHunterService from '../../services/jobHunterService';
 export default function JobHunterList() {
+const [jobhunters, setJobhunters] = useState([])
+
+  useEffect(()=>{
+    let jobhunterService= new JobHunterService()
+    jobhunterService.getAll().then(result=>setJobhunters(result.data.data))
+  },[])
     return (
         <div>
                <Table celled>
@@ -15,14 +22,19 @@ export default function JobHunterList() {
         </Table.Header>
 
         <Table.Body>
-          
-            <Table.Row>
-              <Table.Cell>Ahmet</Table.Cell>
-              <Table.Cell>uçar</Table.Cell>
-              <Table.Cell>1990</Table.Cell>
-              <Table.Cell>123465634</Table.Cell>
-              <Table.Cell>Senpai@ssg.com</Table.Cell>
+          {
+          jobhunters.map((hunter)=>(
+
+            <Table.Row key={hunter.userId}>
+              <Table.Cell>{hunter.firstName}</Table.Cell>
+              <Table.Cell>{hunter.lastName}</Table.Cell>
+              <Table.Cell>{hunter.birthDate}</Table.Cell>
+              <Table.Cell>{hunter.nationalIdentity}</Table.Cell>
+              <Table.Cell>{hunter.email}</Table.Cell>
             </Table.Row>
+          ))
+          }
+            
          
         </Table.Body>
 
