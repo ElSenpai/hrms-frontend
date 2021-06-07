@@ -1,41 +1,49 @@
 import React from 'react'
-import { Container, Menu,Button } from 'semantic-ui-react'
+
+import { Dropdown, Icon, Container, Menu, Button, Image } from 'semantic-ui-react'
 export default function Navi() {
     return (
-        <div> 
+        <div>
             <Container>
-            <Menu stackable >
-               
-                <Menu.Item>
-                HRMS
-                </Menu.Item>
+                <Menu stackable >
 
-                <Menu.Item
-                    name='features'
+                    <Menu.Item>
+                        <Icon circular inverted color='black' name='users' />
+                       
+                    </Menu.Item>
 
-                >
-                    Features
-        </Menu.Item>
+                    {/* <Menu.Item
+                        name='features'
 
-                <Menu.Item
-                    name='testimonials'
+                    >
 
-                >
-                    Testimonials
-        </Menu.Item >
+                    </Menu.Item>
 
-                <Menu.Item  position="right"
-                    name='sign-in'
+                    <Menu.Item
+                        name='testimonials'
 
-                >
-                    <Button.Group>
-    <Button>Login</Button>
-    <Button.Or />
-    <Button positive>Sign up</Button>
-  </Button.Group>
-        </Menu.Item>
-        
-            </Menu>
+                    >
+                        Testimonials
+        </Menu.Item > */}
+                    <Dropdown item text='Advertisements'>
+                        <Dropdown.Menu>
+                            <Dropdown.Item>Coming</Dropdown.Item>
+                            <Dropdown.Item>Active</Dropdown.Item>
+                            <Dropdown.Item>Home</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Menu.Item position="right"
+                        name='sign-in'
+
+                    >
+                        <Button.Group>
+                            <Button positive>Login</Button>
+                            <Button.Content />
+                            <Button negative color='teal'>Sign up</Button>
+                        </Button.Group>
+                    </Menu.Item>
+
+                </Menu>
             </Container>
         </div>
     )
