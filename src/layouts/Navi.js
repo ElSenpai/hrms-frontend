@@ -1,6 +1,9 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-import { Dropdown, Icon, Container, Menu, Button, Image } from 'semantic-ui-react'
+
+import { Dropdown, Icon, Container, Menu,  Button } from 'semantic-ui-react'
+import JobPostingAdd from '../pages/job/JobPostingAdd'
 export default function Navi() {
     return (
         <div>
@@ -8,30 +11,14 @@ export default function Navi() {
                 <Menu stackable >
 
                     <Menu.Item>
-                        <Icon circular inverted color='black' name='users' />
-                       
-                    </Menu.Item>
-
-                    {/* <Menu.Item
-                        name='features'
-
-                    >
+                    <NavLink to={"/home"} ><Icon circular inverted color='black' name='users' /></NavLink>
+                        
 
                     </Menu.Item>
 
-                    <Menu.Item
-                        name='testimonials'
-
-                    >
-                        Testimonials
-        </Menu.Item > */}
-                    <Dropdown item text='Advertisements'>
-                        <Dropdown.Menu>
-                            <Dropdown.Item>Coming</Dropdown.Item>
-                            <Dropdown.Item>Active</Dropdown.Item>
-                            <Dropdown.Item>Home</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                
+                    
+                    
                     <Menu.Item position="right"
                         name='sign-in'
 
@@ -43,6 +30,16 @@ export default function Navi() {
                         </Button.Group>
                     </Menu.Item>
 
+                  
+
+                        <Dropdown item icon="user" text="UserName" >
+                            <Dropdown.Menu>
+                              <Dropdown.Item> <NavLink to={"/admin"} >Admin Page</NavLink></Dropdown.Item>
+                              <Dropdown.Item>  <NavLink to={"/employer"} > Employer</NavLink></Dropdown.Item>
+                             </Dropdown.Menu>
+                             </Dropdown>
+                          
+                    
                 </Menu>
             </Container>
         </div>

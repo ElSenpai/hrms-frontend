@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { Icon,  Menu, Table } from "semantic-ui-react";
 import EmployerService from '../../services/employerService';
+import { Link } from "react-router-dom";
 export default function EmployerList() {
 
   const [employers, setEmployers] = useState([])
@@ -15,10 +16,8 @@ export default function EmployerList() {
              <Table celled>
         <Table.Header>   
           <Table.Row>
-            <Table.HeaderCell>First Name</Table.HeaderCell>
-            <Table.HeaderCell>Last Name</Table.HeaderCell>
-            <Table.HeaderCell>website</Table.HeaderCell>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
+            <Table.HeaderCell>website</Table.HeaderCell>        
             <Table.HeaderCell>Phone number</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -27,13 +26,11 @@ export default function EmployerList() {
           
           {
            
-          employers.map((emp=>(
-            <Table.Row key={emp.useId}>
-              <Table.Cell>{emp.firstName}</Table.Cell>
-              <Table.Cell>{emp.lastName}</Table.Cell>
-              <Table.Cell>{emp.website}</Table.Cell>
-              <Table.Cell>{emp.companyName}</Table.Cell>
-              <Table.Cell>{emp.phoneNumber}</Table.Cell>
+          employers.map((empa=>(
+            <Table.Row key={empa.userId} >
+              <Table.Cell ><Link to={`/home/jobposting/${empa.userId}`}>{empa.companyName}</Link> </Table.Cell>
+              <Table.Cell>{empa.website}</Table.Cell>             
+              <Table.Cell>{empa.phoneNumber}</Table.Cell>
             </Table.Row>
           )))
           }       
@@ -41,7 +38,7 @@ export default function EmployerList() {
 
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="5">
+            <Table.HeaderCell colSpan="3">
               <Menu floated="right" pagination>
                 <Menu.Item as="a" icon>
                   <Icon name="chevron left" />

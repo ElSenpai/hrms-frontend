@@ -8,7 +8,7 @@ useEffect(()=>{
   let employeeService = new EmployeeService()
   employeeService.getAll().then(result=>setEmployees(result.data.data))
 
-})
+},[])
     return (
         <div>
             <Table celled>
@@ -25,7 +25,7 @@ useEffect(()=>{
           {
              employees.map((emp)=>(
                 <Table.Row key={emp.userId}>
-              <Table.Cell>{emp.firsName}</Table.Cell>
+              <Table.Cell>{emp.firstName}</Table.Cell>
               <Table.Cell>{emp.lastName}</Table.Cell>
               <Table.Cell>{emp.email}</Table.Cell>
             </Table.Row>
