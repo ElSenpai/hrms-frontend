@@ -5,7 +5,7 @@ export default class JobPostingService{
         return axios.get("http://localhost:8080/api/verifications/getall")
     }
     getAllConfirmed(){
-        return axios.get(`http://localhost:8080/api/jobpostings/getallbyconfirmed?confirmed=true`)
+        return axios.get(`http://localhost:8080/api/statuses/getall`)
     }
     getById(employerId){
       return axios.get(`http://localhost:8080/api/jobpostings/getallbyemployerid?employerId=${employerId}`)
