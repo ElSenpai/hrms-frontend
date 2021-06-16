@@ -56,7 +56,7 @@ export default function JobConfirmList() {
                 <Table.Cell>{job.jobPosting?.jobs?.name}</Table.Cell>
                 <Table.Cell>{job.jobPosting?.salary}</Table.Cell>
                 <Table.Cell>{job.jobPosting?.appDate}</Table.Cell>
-                <Table.Cell> <Button onClick={confirmPosting(job.jobPosting?.id)}  >{job.status?.name  } </Button></Table.Cell>
+                <Table.Cell> <Button onClick={()=>confirmPosting(job.jobPosting?.id)}  >{job.status?.name  } </Button></Table.Cell>
             
               </Table.Row>
             
