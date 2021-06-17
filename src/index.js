@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
 import { BrowserRouter } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.render(
   
   <BrowserRouter><App /></BrowserRouter>  ,document.getElementById('root')
